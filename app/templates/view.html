@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if split_book_records %}
+
+<h1>View book records</h1>
+
+<table style="width:100%">
+    <tr>
+        <th>Index</th>
+        <th>BRN</th>
+        <th>Title</th>
+        <th>Author</th>
+    </tr>
+    {% for book_records in split_book_records %}
+    <tr>
+        <th colspan="4"><h3 style="margin:10px; margin-left:0px">
+            {{ book_records[0].classification }}</h3>
+        </th>
+    </tr>
+    {% for book_record in book_records %}
+    <tr>
+        <td>{{ book_record.index }}</td>
+        <td>{{ book_record.brn }}</td>
+        <td>{{ book_record.title }}</td>
+        <td>{{ book_record.author }}</td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+</table>
+
+</br>
+
+<h2>Delete record</h2>
+<form action="" method="post" novalidate>
+    {{ delete_form.hidden_tag() }}
+    <p>
+        {{ delete_form.number.label }}
+        {{ delete_form.number(size=4) }}
+    </p>
+    <p>
+        {{ delete_form.submit() }}
+    </p>
+</form>
+
+{% else %}
+
+<p>
+    You currently have no books. Add one using the form below:
+</p>
+
+{% endif %}
+
+<h2>Add record</h2>
+<form action="" method="post" novalidate>
+    {{ add_form.hidden_tag() }}
+    <p>
+        {{ add_form.brn.label }}
+        {{ add_form.brn() }}
+    </p>
+    <p>
+        {{ add_form.title.label }}
+        {{ add_form.title() }}
+    </p>
+    <p>
+        {{ add_form.author.label }}
+        {{ add_form.author() }}
+    </p>
+    <p>
+        {{ add_form.classification.label }}
+        {{ add_form.classification() }}
+    </p>
+    <p>
+        {{ add_form.submit() }}
+    </p>
+</form>
+
+{% endblock %}

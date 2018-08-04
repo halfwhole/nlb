@@ -1,0 +1,9 @@
+<form align="center" style="margin-top:300px;" action="" method="post" novalidate>
+    {{ login_form.hidden_tag() }}
+    <p>
+        <b>{{ login_form.identifier.label }}</b>
+    </p>
+    <p>
+        {{ login_form.identifier(size=20) }}
+    </p>
+</form>

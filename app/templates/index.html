@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if avail_libs_dict %}
+<h1>Available books</h1>
+<i>Last updated {{ time_diff_str }}.</i>
+<a href="{{ url_for('update') }}">Update</a>
+</br>
+<ul>
+    {% for lib, books in avail_libs_dict.items() %}
+    <li><b>{{ lib }}</b>
+        <ul>
+            {% for book_name, book_ref in books %}
+            <li>{{ book_name }}</br><i>{{ book_ref }}</i></li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+
+{% else %}
+
+<h2>Welcome!</h2>
+<p>
+    Please <a href="{{ url_for('view') }}">view</a> your book records and edit them, then come back to <a href="{{ url_for('update') }}">update</a> your availability record here.
+</p>
+
+{% endif %}
+
+{% endblock %}
