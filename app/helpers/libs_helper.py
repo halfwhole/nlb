@@ -61,10 +61,7 @@ def build_available_libs_dictionary(avail_books_dict):
     return dict(avail_libs_dict)
 
 def get_libs_dict(book_records):
-    print(book_records)
     brn_list = read_records(book_records)
-    print(brn_list)
     avail_books_dict = build_available_books_dictionary(brn_list)
-    print(avail_books_dict)
     avail_libs_dict  = build_available_libs_dictionary(avail_books_dict)
     return avail_libs_dict
